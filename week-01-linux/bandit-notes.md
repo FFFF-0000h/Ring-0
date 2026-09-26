@@ -218,3 +218,23 @@
 
     - The `file` utility acts as a navigator across nested archives by identifying the compression signature regardless of current extension.
 
+## Level 13 -> Level 14
+
+* **Goal:** Use an RSA private key stored in `sshkey.private` to authenticate as `bandit14` via SSH on `localhost` and retrieve the Level 14 password.
+* **Commands Executed:**
+  ```bash
+  ssh bandit13@bandit.labs.overthewire.org -p 2220
+  ls -l
+  #copy the content of the sshkey.private file and then logout of the session
+  logout
+  ssh -i sshkey.private bandit14@bandit.labs.overthewire.org -p 2220
+  cat /etc/bandit_pass/bandit14
+  ```
+- Concepts & Takeaways:
+
+    - Public-key cryptography allows SSH authentication using private keys instead of passwords.
+
+    - The `ssh -i <keyfile>` flag tells SSH to use a specific private key file for authentication.
+
+    - System passwords for all Bandit levels reside in `/etc/bandit_pass/`, protected by standard Linux file permissions.
+
