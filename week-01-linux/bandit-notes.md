@@ -34,3 +34,21 @@
 
     - Prepending ./ explicitly specifies a relative file path (cat ./-), telling cat to treat the dash as a filename inside the current directory rather than a flag.
 
+## Level 2 -> Level 3
+
+* **Goal:** Retrieve the password stored in a file named `--spaces in this filename--` in the home directory.
+* **Commands Executed:**
+  ```bash
+  ssh bandit2@bandit.labs.overthewire.org -p 2220
+  cat ./"--spaces in this filename--"
+  # Alternative: cat "./--spaces in this filename--"
+  # Alternative: cat -- "--spaces in this filename--"
+  # Alternative: cat ./--spaces\ in\ this\ filename--
+
+- Concepts & Takeaways:
+
+    - Bash uses whitespace (spaces) to separate arguments passed to a command. Passing cat spaces in this filename causes cat to search for four separate files (spaces, in, this, and filename).
+
+    - Enclosing the filename in double quotes ("...") or escaping every space with a backslash (\ ) tells the shell to process the entire string as a single filename argument.
+
+
