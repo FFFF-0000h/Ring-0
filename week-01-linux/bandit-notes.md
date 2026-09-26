@@ -51,4 +51,22 @@
 
     - Enclosing the filename in double quotes ("...") or escaping every space with a backslash (\ ) tells the shell to process the entire string as a single filename argument.
 
+## Level 3 -> Level 4
 
+* **Goal:** Retrieve the password stored in a hidden file inside the `inhere` directory.
+* **Commands Executed:**
+  ```bash
+  ssh bandit3@bandit.labs.overthewire.org -p 2220
+  cd inhere
+  ls -a
+  cat ...Hiding-From-You
+  # Alternative: cat ./...Hiding-From-You
+  # Alternative: cat "...Hiding-From-You"
+  # Alternative: cat "./...Hiding-From-You"
+  # Alternative: cat ./"./...Hiding-From-You"
+  ```
+- Concepts & Takeaways:
+
+    - In Linux/Unix systems, any file or directory whose name begins with a dot (.) is considered hidden and will not show up with a standard ls command.
+
+    - The -a (all) flag with ls (ls -a) is required to reveal hidden files (dotfiles).
