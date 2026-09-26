@@ -197,3 +197,24 @@
     - ROT13 is a classic symmetric substitution cipher shifting letters by 13 positions.
 
     - The `tr` (translate) command transforms standard input by mapping a source set of characters to a destination set.
+
+## Level 12 -> Level 13
+
+* **Goal:** Reconstruct a binary file from a hex dump and iteratively decompress nested archives (`gzip`, `bzip2`, `tar`) to extract the password.
+* **Commands Executed:**
+  ```bash
+  ssh bandit12@bandit.labs.overthewire.org -p 2220
+  mkdir /tmp/workspace_bandit12 && cp data.txt /tmp/workspace_bandit12/ && cd /tmp/workspace_bandit12
+  xxd -r data.txt > file1
+  file file1
+  # Iteratively rename (.gz, .bz2, .tar) and unpack until plain text is reached
+  cat <final_file>
+  ```
+- Concepts & Takeaways:
+
+    - System accounts with restricted write access require temporary scratchpads like `/tmp` to alter or unpack data.
+
+    - `xxd -r` turns a hex dump back into raw binary bytes.
+
+    - The `file` utility acts as a navigator across nested archives by identifying the compression signature regardless of current extension.
+
