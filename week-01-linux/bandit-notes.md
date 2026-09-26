@@ -169,3 +169,17 @@
     - strings extracts human-readable ASCII text sequences from binary or non-text files.
 
     - Piping strings into `grep` allows quick filtering of printable output without corrupting the terminal display with raw binary data.
+
+## Level 10 -> Level 11
+
+* **Goal:** Decode the Base64-encoded data inside `data.txt` to retrieve the password.
+* **Commands Executed:**
+  ```bash
+  ssh bandit10@bandit.labs.overthewire.org -p 2220
+  base64 -d data.txt
+  ```
+- Concepts & Takeaways:
+
+    - Base64 is an encoding scheme that translates data into a 64-character ASCII representation for reliable transmission.
+
+    - The base64 utility decodes files using the `-d` (or `--decode`) flag.
