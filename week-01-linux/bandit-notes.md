@@ -32,7 +32,7 @@
 
     - When a filename begins with a dash (-), command-line tools like cat interpret the argument as an option flag or expect input from stdin.
 
-    - Prepending ./ explicitly specifies a relative file path (cat ./-), telling cat to treat the dash as a filename inside the current directory rather than a flag.
+    - Prepending `./` explicitly specifies a relative file path (`cat ./-`), telling cat to treat the dash as a filename inside the current directory rather than a flag.
 
 ## Level 2 -> Level 3
 
@@ -69,7 +69,7 @@
 
     - In Linux/Unix systems, any file or directory whose name begins with a dot (.) is considered hidden and will not show up with a standard ls command.
 
-    - The -a (all) flag with ls (ls -a) is required to reveal hidden files (dotfiles).
+    - The `-a` (all) flag with `ls` (ls -a) is required to reveal hidden files (dotfiles).
 
 ## Level 4 -> Level 5
 
@@ -83,7 +83,7 @@
   ```
 - Concepts & Takeaways:
 
-    - The file command inspects file signatures (magic bytes) to determine file types regardless of extension or contents.
+    - The `file` command inspects file signatures (magic bytes) to determine file types regardless of extension or contents.
 
     - Combining wildcard expansion (*) with relative path prefixing (./*) allows file to inspect every item in a directory without leading dashes breaking parameter parsing.
 
@@ -99,8 +99,25 @@
   ```
 - Concepts & Takeaways:
 
-    - The find utility recursively searches directory structures based on file attributes rather than text content.
+    - The `find` utility recursively searches directory structures based on file attributes rather than text content.
 
-    - -size 1033c matches files of exactly 1033 bytes (c specifier).
+    - `-size 1033c` matches files of exactly 1033 bytes (c specifier).
 
-    - Exclamation mark ! acts as a logical NOT operator in find queries (e.g., ! -executable).
+    - Exclamation mark `!` acts as a logical NOT operator in find queries (e.g., ! -executable).
+
+## Level 6 -> Level 7
+
+* **Goal:** Locate a 33-byte file somewhere on the system owned by user `bandit7` and group `bandit6`.
+* **Commands Executed:**
+  ```bash
+  ssh bandit6@bandit.labs.overthewire.org -p 2220
+  find / -user bandit7 -group bandit6 -size 33c #Alternative: find / -user bandit7 -group bandit6 -size 33c 2>/dev/null
+  cat /var/lib/dpkg/info/bandit7.password
+  ```
+- Concepts & Takeaways:
+
+    - `find /` searches recursively starting from the root directory.
+
+    - `-user` and `-group` filter search results by ownership.
+
+    - `2>/dev/null` redirects stderr (file descriptor 2) to the null device, suppressing access/permission errors from cluttering terminal output.
