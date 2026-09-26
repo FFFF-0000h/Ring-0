@@ -135,3 +135,23 @@
     - grep (Global Regular Expression Print) searches text files for lines matching a specified string or pattern.
 
     - Using grep on large datasets eliminates manual terminal scrolling and isolates target data instantly.
+
+## Level 8 -> Level 9
+
+* **Goal:** Find the only line of text in `data.txt` that occurs exactly once.
+* **Commands Executed:**
+  ```bash
+  ssh bandit8@bandit.labs.overthewire.org -p 2220
+  sort data.txt | uniq -c
+  # Use the -u flag to print only the unique line
+  # Alternative: sort data.txt | uniq -u 
+  ```
+- Concepts & Takeaways:
+
+    - `sort` rearranges lines in text files into alphabetical/numerical order.
+
+    - `uniq` filters duplicate lines, but requires sorted input because it only evaluates adjacent/consecutive matches.
+
+    - The `-u` flag on `uniq` causes it to print only unique lines (suppressing all repeated lines).
+
+    - The pipe operator (`|`) redirects standard output from `sort` directly into standard input for `uniq`.
