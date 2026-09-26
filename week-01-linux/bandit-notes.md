@@ -70,3 +70,19 @@
     - In Linux/Unix systems, any file or directory whose name begins with a dot (.) is considered hidden and will not show up with a standard ls command.
 
     - The -a (all) flag with ls (ls -a) is required to reveal hidden files (dotfiles).
+
+## Level 4 -> Level 5
+
+* **Goal:** Find and read the only human-readable (ASCII text) file inside the `inhere` directory.
+* **Commands Executed:**
+  ```bash
+  ssh bandit4@bandit.labs.overthewire.org -p 2220
+  cd inhere
+  file ./*
+  cat ./-file07
+  ```
+- Concepts & Takeaways:
+
+    - The file command inspects file signatures (magic bytes) to determine file types regardless of extension or contents.
+
+    - Combining wildcard expansion (*) with relative path prefixing (./*) allows file to inspect every item in a directory without leading dashes breaking parameter parsing.
