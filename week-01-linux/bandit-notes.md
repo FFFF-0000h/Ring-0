@@ -121,3 +121,17 @@
     - `-user` and `-group` filter search results by ownership.
 
     - `2>/dev/null` redirects stderr (file descriptor 2) to the null device, suppressing access/permission errors from cluttering terminal output.
+
+## Level 7 -> Level 8
+
+* **Goal:** Find the password in `data.txt` located next to the word `millionth`.
+* **Commands Executed:**
+  ```bash
+  ssh bandit7@bandit.labs.overthewire.org -p 2220
+  grep "millionth" data.txt
+  ```
+- Concepts & Takeaways:
+
+    - grep (Global Regular Expression Print) searches text files for lines matching a specified string or pattern.
+
+    - Using grep on large datasets eliminates manual terminal scrolling and isolates target data instantly.
