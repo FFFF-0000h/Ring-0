@@ -238,3 +238,16 @@
 
     - System passwords for all Bandit levels reside in `/etc/bandit_pass/`, protected by standard Linux file permissions.
 
+## Level 14 -> Level 15
+
+* **Goal:** Submit the password for Level 14 to port 30000 on `localhost` to retrieve the password for Level 15.
+* **Commands Executed:**
+  ```bash
+  ssh bandit14@bandit.labs.overthewire.org -p 2220
+  cat /etc/bandit_pass/bandit14 | nc localhost 30000
+  ```
+- Concepts & Takeaways:
+
+    - Netcat (`nc`) is a networking utility used to read from and write to raw TCP and UDP socket connections.
+
+    - Local services running on specific ports can be queried directly via command line by passing host and port arguments to `nc`.
