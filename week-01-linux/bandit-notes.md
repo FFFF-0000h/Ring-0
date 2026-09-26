@@ -86,3 +86,21 @@
     - The file command inspects file signatures (magic bytes) to determine file types regardless of extension or contents.
 
     - Combining wildcard expansion (*) with relative path prefixing (./*) allows file to inspect every item in a directory without leading dashes breaking parameter parsing.
+
+## Level 5 -> Level 6
+
+* **Goal:** Find a file under the `inhere` directory tree that is 1033 bytes in size, non-executable, and human-readable.
+* **Commands Executed:**
+  ```bash
+  ssh bandit5@bandit.labs.overthewire.org -p 2220
+  cd inhere
+  find ./ -type f -size 1033c # Alternative: find ./ -type f -size 1033c ! -executable
+  cat inhere/maybehere07/.file2
+  ```
+- Concepts & Takeaways:
+
+    - The find utility recursively searches directory structures based on file attributes rather than text content.
+
+    - -size 1033c matches files of exactly 1033 bytes (c specifier).
+
+    - Exclamation mark ! acts as a logical NOT operator in find queries (e.g., ! -executable).
