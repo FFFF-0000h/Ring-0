@@ -183,3 +183,17 @@
     - Base64 is an encoding scheme that translates data into a 64-character ASCII representation for reliable transmission.
 
     - The base64 utility decodes files using the `-d` (or `--decode`) flag.
+
+## Level 11 -> Level 12
+
+* **Goal:** Decode text in `data.txt` that has been obfuscated using a ROT13 cipher.
+* **Commands Executed:**
+  ```bash
+  ssh bandit11@bandit.labs.overthewire.org -p 2220
+  cat data.txt | tr 'a-zA-Z' 'n-za-mN-ZA'
+  ```
+- Concepts & Takeaways:
+
+    - ROT13 is a classic symmetric substitution cipher shifting letters by 13 positions.
+
+    - The `tr` (translate) command transforms standard input by mapping a source set of characters to a destination set.
