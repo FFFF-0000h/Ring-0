@@ -155,3 +155,17 @@
     - The `-u` flag on `uniq` causes it to print only unique lines (suppressing all repeated lines).
 
     - The pipe operator (`|`) redirects standard output from `sort` directly into standard input for `uniq`.
+
+## Level 9 -> Level 10
+
+* **Goal:** Extract a human-readable string preceded by multiple `=` signs from a binary file (`data.txt`).
+* **Commands Executed:**
+  ```bash
+  ssh bandit9@bandit.labs.overthewire.org -p 2220
+  strings data.txt | grep "=="
+  ```
+- Concepts & Takeaways:
+
+    - strings extracts human-readable ASCII text sequences from binary or non-text files.
+
+    - Piping strings into `grep` allows quick filtering of printable output without corrupting the terminal display with raw binary data.
